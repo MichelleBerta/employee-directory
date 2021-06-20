@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
+import '../App';
 import * as ReactBootStrap from "react-bootstrap";
 const axios = require('axios');
 
-// Make a request for a user with a given ID
 
 const Table = () => {
 const [employees, setEmployees] = useState([])
   const getEmployees = () =>{
-    axios.get('https://randomuser.me/api/')
+    axios.get('https://randomuser.me/api/?results=10')
     .then(function (response) {
       // handle success
       console.log(response);
@@ -27,7 +26,7 @@ const [employees, setEmployees] = useState([])
 const renderEmployee = (employee, index) => {
   return(
     <tr key={index}>
-      <td><img src={employee.picture.thumbnail}/></td>
+      <td><img src={employee.picture.thumbnail} alt=""/></td>
       <td>{`${employee.name.first} ${employee.name.last}`}</td>
       <td>{`${employee.phone}`}</td>
       <td>{`${employee.email}`}</td>
