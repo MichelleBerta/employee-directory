@@ -1,9 +1,9 @@
 import React from "react";
 
-function Header(props) {
+const Header = (props) => {
     return (
-<div>Employee Directory  <br />
-  Click on each heading to sort or use the search box to filter your results
+<div className="header">Employee Directory
+ <p>Click on each heading to sort or use the search box to filter your results</p>
 </div>
 );
 }
