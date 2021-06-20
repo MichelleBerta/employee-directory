@@ -26,14 +26,18 @@ const [employees, setEmployees] = useState([])
 const renderEmployee = (employee, index) => {
   return(
     <tr key={index}>
-      <td><img src={employee.picture.thumbnail} alt=""/></td>
+      <td><img src={employee.picture.medium} alt=""/></td>
+      <td>{`${employee.gender}`}</td>
       <td>{`${employee.name.first} ${employee.name.last}`}</td>
       <td>{`${employee.phone}`}</td>
       <td>{`${employee.email}`}</td>
-      <td>{`${employee.dob.date}`}</td>
+      <td>{`${employee.location.city}, ${employee.location.state}`}</td>
     </tr>
   )
 }
+
+
+
 useEffect(() => {
   if (!employees) {
     return;
@@ -46,10 +50,11 @@ getEmployees()
   <thead>
     <tr>
       <th>Image</th>
+      <th>Gender</th>
       <th>Name</th>
       <th>Phone</th>
       <th>Email</th>
-      <th>DOB</th>
+      <th>Location</th>
     </tr>
   </thead>
   <tbody>
