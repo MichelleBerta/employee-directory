@@ -57,7 +57,7 @@ const handleInputChange=(event) => {
 
 const handleClick = (event) => {
   setEmployees2(
-  employees.sort((a, b) => {return (a.name.last > b.name.last) ? 1 : 0}))
+  employees.sort((a, b) => {return (a.location > b.location) ? 1 : 0}))
 }
 
 useEffect(() => {
@@ -76,10 +76,10 @@ getEmployees()
     <tr>
       <th>Image</th>
       <th>Gender</th>
-      <th onClick={handleClick}>Name</th>
+      <th>Name</th>
       <th>Phone</th>
       <th>Email</th>
-      <th>Location</th>
+      <th onClick={handleClick}>Location</th>
     </tr>
   </thead>
   <tbody>
