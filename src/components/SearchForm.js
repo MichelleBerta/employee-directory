@@ -1,6 +1,7 @@
 import React from "react";
 
 function SearchForm(props) {
+  console.log (props)
   return (
     <form>
       <div className="form-group">
@@ -13,10 +14,6 @@ function SearchForm(props) {
           placeholder="Search For an Employee"
           id="search"
         />
-        <br />
-        <button onClick={props.handleFormSubmit} className="btn btn-info">
-          Search
-        </button>
       </div>
     </form>
   );
