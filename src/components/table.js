@@ -55,10 +55,60 @@ const handleInputChange=(event) => {
   setSearch(event.target.value)
 }
 
-const handleClick = (event) => {
-  setEmployees2(
-  employees.sort((a, b) => {return (a.location > b.location) ? 1 : 0}))
-}
+//done with Andrew
+
+// const handleClick = (a, b) => {
+//   setEmployees(
+//   employees.sort((a, b) => {
+//   if (a.employee.location.city > b.employee.location.city) {
+//     return -1;
+//   }
+// return 0
+
+  // if (a.employee.location.city < b.employee.location.city) {
+  //   return 1;
+  // }
+// }))
+// }
+
+//experimenting
+
+// const handleClick = (a,b) => {
+//   setEmployees(
+// employees.sort((a, b) => {
+//   var locationA = a.employee.location.city.toUpperCase(); // ignore upper and lowercase
+//   var locationB = b.employee.location.city.toUpperCase(); // ignore upper and lowercase
+//   if (locationA < locationB) {
+//     return -1;
+//   }
+//   if (locationA > locationB) {
+//     return 1;
+//   }
+
+//   // names must be equal
+//   return 0;
+// })
+// )
+// }
+
+
+const handleClick = (a,b) => {
+  setEmployees(
+  employees.sort((a, b) => {
+      if (a.location.city > b.location.city) {
+          return 1;
+      } else if (a.location.city < b.location.city) {
+          return -1;
+      } else {
+          return 0;
+      }
+  })
+  )}
+
+
+
+
+console.log (handleClick);
 
 useEffect(() => {
   if (!employees) {
@@ -79,7 +129,7 @@ getEmployees()
       <th>Name</th>
       <th>Phone</th>
       <th>Email</th>
-      <th onClick={handleClick}>Location</th>
+      <th><a href="button" onClick={handleClick}>Location</a></th>
     </tr>
   </thead>
   <tbody>
