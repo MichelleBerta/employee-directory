@@ -55,58 +55,7 @@ const handleInputChange=(event) => {
   setSearch(event.target.value)
 }
 
-//done with Andrew
-
-// const handleClick = (a, b) => {
-//   setEmployees(
-//   employees.sort((a, b) => {
-//   if (a.employee.location.city > b.employee.location.city) {
-//     return -1;
-//   }
-// return 0
-
-  // if (a.employee.location.city < b.employee.location.city) {
-  //   return 1;
-  // }
-// }))
-// }
-
-//experimenting
-
-// const handleClick = (a,b) => {
-//   setEmployees(
-// employees.sort((a, b) => {
-//   var locationA = a.employee.location.city.toUpperCase(); // ignore upper and lowercase
-//   var locationB = b.employee.location.city.toUpperCase(); // ignore upper and lowercase
-//   if (locationA < locationB) {
-//     return -1;
-//   }
-//   if (locationA > locationB) {
-//     return 1;
-//   }
-
-//   // names must be equal
-//   return 0;
-// })
-// )
-// }
-
-
-// const handleClick = (a,b) => {
-//   setEmployees(
-//   employees.sort((a, b) => {
-//       if (a.location.city > b.location.city) {
-//           return 1;
-//       } else if (a.location.city < b.location.city) {
-//           return -1;
-//       } else {
-//           return 0;
-//       }
-//   })
-//   )}
-
-
-// correct from Andrew
+// sorting
   const handleClick = (event) => {
     event.preventDefault();
     setEmployees(
