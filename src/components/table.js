@@ -10,7 +10,7 @@ const [employees, setEmployees] = useState([])
 const [employees2, setEmployees2] = useState([])
 const [search, setSearch] = useState("")
   const getEmployees = () =>{
-    axios.get('https://randomuser.me/api/?results=10')
+    axios.get('https://randomuser.me/api/?results=100')
     .then(function (response) {
       // handle success
       console.log(response);
@@ -92,23 +92,34 @@ const handleInputChange=(event) => {
 // }
 
 
-const handleClick = (a,b) => {
-  setEmployees(
-  employees.sort((a, b) => {
-      if (a.location.city > b.location.city) {
-          return 1;
-      } else if (a.location.city < b.location.city) {
-          return -1;
-      } else {
-          return 0;
+// const handleClick = (a,b) => {
+//   setEmployees(
+//   employees.sort((a, b) => {
+//       if (a.location.city > b.location.city) {
+//           return 1;
+//       } else if (a.location.city < b.location.city) {
+//           return -1;
+//       } else {
+//           return 0;
+//       }
+//   })
+//   )}
+
+
+// correct from Andrew
+  const handleClick = (event) => {
+    event.preventDefault();
+    setEmployees(
+      employees.sort((employee, employee2) => {
+      if (employee.location.city < employee2.location.city) {
+        return 1;
       }
-  })
-  )}
-
-
-
-
-console.log (handleClick);
+      if (employee.location.city > employee2.location.city) {
+        return -1;
+      }
+      return 0
+    }))
+  }
 
 useEffect(() => {
   if (!employees) {
