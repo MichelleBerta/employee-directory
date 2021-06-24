@@ -4,14 +4,15 @@ import * as ReactBootStrap from "react-bootstrap";
 import SearchForm from "./SearchForm.js";
 const axios = require("axios");
 
-// add randomuser api data
+// add rendomusesr api
 const Table = () => {
   const [employees, setEmployees] = useState([]);
   const [employees2, setEmployees2] = useState([]);
+  const [s, setS] = useState("asc");
   const [search, setSearch] = useState("");
   const getEmployees = () => {
     axios
-      .get("https://randomuser.me/api/?results=100")
+      .get("https://randomuser.me/api/?results=10")
       .then(function (response) {
         // handle success
         console.log(response);
@@ -27,10 +28,9 @@ const Table = () => {
       });
   };
 
-  // choose table columns
   const renderEmployee = (employee, index) => {
     return (
-      <tr key={index}>
+      <tr key={`${index}-emp`}>
         <td>
           <img src={employee.picture.medium} alt="" />
         </td>
@@ -43,12 +43,13 @@ const Table = () => {
     );
   };
 
-  // filter/search
+  // filter/search employees
   const handleInputChange = (event) => {
     console.log(event);
     const value = event.target.value;
     if (value.length > 0) {
-      const filteredEmployees = employees.filter((employee, i) => {
+      const newEmployees = employees;
+      const filteredEmployees = newEmployees.filter((employee, i) => {
         return employee.name.last.toLowerCase().includes(value.toLowerCase());
       });
       setEmployees2(filteredEmployees);
@@ -59,20 +60,37 @@ const Table = () => {
     setSearch(event.target.value);
   };
 
-  // sorting
+  // sort employees
   const handleClick = (event) => {
     event.preventDefault();
-    setEmployees(
-      employees.sort((employee, employee2) => {
-        if (employee.location.city < employee2.location.city) {
+    if (s === "asc") {
+      const sortedEmployees = employees.sort((employee1, employee2) => {
+        const name1 = employee1.name.first.toLowerCase();
+        const name2 = employee2.name.first.toLowerCase();
+        if (name1 > name2) {
+          return -1;
+        } else if (name2 > name1) {
           return 1;
         }
-        if (employee.location.city > employee2.location.city) {
+      });
+      console.log(sortedEmployees[0].name);
+      setEmployees2(sortedEmployees);
+      setS("dsc");
+    } else {
+      const sortedEmployees = employees.sort((employee1, employee2) => {
+        const name1 = employee1.name.first.toLowerCase();
+        const name2 = employee2.name.first.toLowerCase();
+        if (name1 > name2) {
+          return 1;
+        } else if (name2 > name1) {
           return -1;
         }
-        return 0;
-      })
-    );
+      });
+      console.log(sortedEmployees[0].name);
+      setEmployees2(sortedEmployees);
+      setS("asc");
+    }
+    console.log(s);
   };
 
   useEffect(() => {
@@ -87,15 +105,53 @@ const Table = () => {
       <ReactBootStrap.Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>Image</th>
-            <th>Gender</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>
-              <a href="button" onClick={handleClick}>
-                Location
-              </a>
+            <th
+              onClick={(e) => {
+                console.log(e);
+                handleClick(e);
+              }}
+            >
+              Image
+            </th>
+            <th
+              onClick={(e) => {
+                console.log(e);
+                handleClick(e);
+              }}
+            >
+              Gender
+            </th>
+            <th
+              onClick={(e) => {
+                console.log(e);
+                handleClick(e);
+              }}
+            >
+              Name
+            </th>
+            <th
+              onClick={(e) => {
+                console.log(e);
+                handleClick(e);
+              }}
+            >
+              Phone
+            </th>
+            <th
+              onClick={(e) => {
+                console.log(e);
+                handleClick(e);
+              }}
+            >
+              Email
+            </th>
+            <th
+              onClick={(e) => {
+                console.log(e);
+                handleClick(e);
+              }}
+            >
+              Location
             </th>
           </tr>
         </thead>
