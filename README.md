@@ -18,8 +18,8 @@ This employee directory, created using React, is an application designed so the 
 
 ## Screenshots
 
-![employee-directory](assets/employee-directory.png)
+![employee-directory](public/assets/employee-directory.png)
 
 
 ## Demonstration
-![employee-dirctory](assets/employee-directory.gif)
+![employee-dirctory](public/assets/employee-directory.gif)
